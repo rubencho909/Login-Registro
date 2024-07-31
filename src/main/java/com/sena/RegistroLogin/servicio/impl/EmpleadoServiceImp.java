@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author RUBEN DARIO PEREZ
+ * Archivo que implementa los metodos del servicio
+ */
 @Service
 public class EmpleadoServiceImp implements EmpleadoService {
 

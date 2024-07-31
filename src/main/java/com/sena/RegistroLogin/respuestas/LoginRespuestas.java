@@ -1,5 +1,10 @@
 package com.sena.RegistroLogin.respuestas;
 
+/**
+ * @author RUBEN DARIO PEREZ
+ * @since 30/07/2024
+ * Archivo utilizado para manejar las respuestas a los metodos HTTP
+ */
 public class LoginRespuestas {
 
     String mensaje;

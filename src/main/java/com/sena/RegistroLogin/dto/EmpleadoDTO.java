@@ -1,5 +1,10 @@
 package com.sena.RegistroLogin.dto;
 
+/**
+ * @author RUBEN DARIO PEREZ
+ * @since 30/07/2024
+ * Archivo utilizado para manejar la informacion del Empleado
+ */
 public class EmpleadoDTO {
 
     private int id;

@@ -2,6 +2,11 @@ package com.sena.RegistroLogin.modelo;
 
 import jakarta.persistence.*;
 
+/**
+ * @author RUBEN DARIO PEREZ
+ * @since 30/07/2024
+ * Entidad Empleado
+ */
 @Entity
 @Table(name = "empleado")
 public class Empleado {
