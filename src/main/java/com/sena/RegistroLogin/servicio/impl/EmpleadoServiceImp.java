@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,11 +31,13 @@ public class EmpleadoServiceImp implements EmpleadoService {
         Empleado empleado = new Empleado(
                 empleadoDTO.getId(),
                 empleadoDTO.getNombre(),
+                empleadoDTO.getTipoIdentificacion(),
+                empleadoDTO.getIdentificacion(),
                 empleadoDTO.getEmail(),
                 this.passwordEncoder.encode(empleadoDTO.getPassword())
         );
         empleadoRepositorio.save(empleado);
-        return  empleado.getNombre();
+        return empleado.getNombre() + " Creado Exitosamente!";
     }
 
     @Override
@@ -57,6 +60,39 @@ public class EmpleadoServiceImp implements EmpleadoService {
             }
         } else {
             return new LoginRespuestas("Email not exits", false);
+        }
+    }
+
+    @Override
+    public List<Empleado> listarEmpleados() {
+        return empleadoRepositorio.findAll();
+    }
+
+    @Override
+    public boolean eliminarEmpleado(Integer id) {
+        Optional<Empleado> empleado = empleadoRepositorio.findById(id);
+        if (empleado.isPresent()) {
+            empleadoRepositorio.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean editarEmpleado(Integer id, EmpleadoDTO empleadoDTO) {
+        Optional<Empleado> empleado = empleadoRepositorio.findById(id);
+        if (empleado.isPresent()) {
+            Empleado empleadoExistente = empleado.get();
+            empleadoExistente.setNombre(empleadoDTO.getNombre());
+            empleadoExistente.setTipoIdentificacion(empleadoDTO.getTipoIdentificacion());
+            empleadoExistente.setIdentificacion(empleadoDTO.getIdentificacion());
+            empleadoExistente.setEmail(empleadoDTO.getEmail());
+            this.passwordEncoder.encode(empleadoDTO.getPassword());
+            empleadoRepositorio.save(empleadoExistente);
+            return true;
+        } else {
+            return false;
         }
     }
 

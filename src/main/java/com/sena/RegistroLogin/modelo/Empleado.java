@@ -19,6 +19,11 @@ public class Empleado {
     @Column(name = "nombre", length = 255)
     private String nombre;
 
+    private String tipoIdentificacion;
+
+    @Column(unique = true)
+    private String identificacion;
+
     @Column(name = "email", length = 255)
     private String email;
 
@@ -28,9 +33,11 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int id, String nombre, String email, String password) {
+    public Empleado(int id, String nombre, String tipoIdentificacion, String identificacion, String email, String password) {
         this.id = id;
         this.nombre = nombre;
+        this.tipoIdentificacion = tipoIdentificacion;
+        this.identificacion = identificacion;
         this.email = email;
         this.password = password;
     }
@@ -67,15 +74,31 @@ public class Empleado {
         this.password = password;
     }
 
+    public String getTipoIdentificacion() {
+        return tipoIdentificacion;
+    }
+
+    public void setTipoIdentificacion(String tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
     @Override
     public String toString() {
         return "Empleado{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", tipoIdentificacion='" + tipoIdentificacion + '\'' +
+                ", identificacion='" + identificacion + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
-
-
 }
