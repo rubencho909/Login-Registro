@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador para manejar las peticiones HTTP de Agendar Servicio
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/agenda")
